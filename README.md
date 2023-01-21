@@ -1,2 +1,2 @@
 # ImageToASCII
-Transform an image into an ascii character.
+Transform an image into asciis characters.
