@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import Image
-from array import *
+
 import sys
 
 from tqdm import tqdm
