@@ -10,7 +10,9 @@ Transform an image into asciis characters.
 `cd ImageToASCII`
 <br>
 `pip install -r Requirements.txt`
+<br>
+`chmod +x main.py`
 ## Usage
-`python3 main.py [IMAGE_PATH] [RESULT_WIDTH]`
+`./main.py [IMAGE_PATH] [RESULT_WIDTH]`
 ## Help
 `python3 main.py --help` or 
