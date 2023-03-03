@@ -2,7 +2,8 @@
 
 from tkinter import *
 from PIL import Image
-
+import os
+from pathlib import Path
 import sys
 
 from tqdm import tqdm
@@ -55,7 +56,7 @@ if len(sys.argv) >= 2:
         print_help()
     else:
         if len(sys.argv) == 3:
-            img_filename = sys.argv[1]
+            img_filename = os.path.abspath(sys.argv[1])
             img_height = int(sys.argv[2])
 
         else:
