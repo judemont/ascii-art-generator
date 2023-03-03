@@ -12,7 +12,12 @@ Transform an image into asciis characters.
 `pip install -r Requirements.txt`
 <br>
 `chmod +x ImageToASCII`
+<br>
+### Add file to bin
+`sudo cp ImageToASCII /bin`
 ## Usage
 `ImageToASCII [IMAGE_PATH] [RESULT_WIDTH]`
-## Help
-`python3 main.py --help` or `python3 main.py -h`
+### Get Help
+`ImageToASCII --help` or `ImageToASCII -h`
+## Contribute
+Yes, you can
