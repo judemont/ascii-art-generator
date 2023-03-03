@@ -20,4 +20,4 @@ Transform an image into asciis characters.
 ### Get Help
 `ImageToASCII --help` or `ImageToASCII -h`
 ## Contribute
-Yes, you can
+Yes, you can.
