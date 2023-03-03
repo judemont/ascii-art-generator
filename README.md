@@ -13,4 +13,4 @@ Transform an image into asciis characters.
 ## Usage
 `python3 main.py [IMAGE_PATH] [RESULT_WIDTH]`
 ## Help
-`python3 main.py --help` or 
+`python3 main.py --help` or `python3 main.py -h`
