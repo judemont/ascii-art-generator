@@ -5,9 +5,11 @@ Transform an image into asciis characters.
 
 
 ## Installation
-### Download
+### 1. Download
 Download the latest release on <a href='https://github.com/judemont/ascii-art-generator/releases/latest'>github.com/judemont/ascii-art-generator/releases/latest</a>
-### Add file to /bin
+### 2. Make executable
+`chmod +x ascii-art-generator`
+### 3. Add file to /bin
 `sudo cp ascii-art-generator /bin`
 
 
