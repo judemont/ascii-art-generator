@@ -5,16 +5,12 @@ Transform an image into asciis characters.
 
 
 ## Installation
-`git clone https://github.com/judemont/ascii-art-generator`
-<br>
-`cd ascii-art-generator`
-<br>
-`pip install -r Requirements.txt`
-<br>
-`chmod +x ascii-art-generator`
-<br>
-### Add file to bin
+### Download
+Download the latest release on <a href='https://github.com/judemont/ascii-art-generator/releases/latest'>github.com/judemont/ascii-art-generator/releases/latest</a>
+### Add file to /bin
 `sudo cp ascii-art-generator /bin`
+
+
 ## Usage
 `ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
 ### Get Help
