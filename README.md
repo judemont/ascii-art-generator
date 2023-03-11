@@ -5,19 +5,19 @@ Transform an image into asciis characters.
 
 
 ## Installation
-`git clone https://github.com/judemont/ImageToASCII`
+`git clone https://github.com/judemont/ascii-art-generator`
 <br>
-`cd ImageToASCII`
+`cd ascii-art-generator`
 <br>
 `pip install -r Requirements.txt`
 <br>
-`chmod +x ImageToASCII`
+`chmod +x ascii-art-generator`
 <br>
 ### Add file to bin
-`sudo cp ImageToASCII /bin`
+`sudo cp ascii-art-generator /bin`
 ## Usage
-`ImageToASCII [IMAGE_PATH] [RESULT_WIDTH]`
+`ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
 ### Get Help
-`ImageToASCII --help` or `ImageToASCII -h`
+`ascii-art-generator --help` or `ascii-art-generator -h`
 ## Contribute
 Yes, you can.
