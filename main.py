@@ -4,7 +4,6 @@ from tkinter import *
 from PIL import Image
 import os
 from pathlib import Path
-import sys
 
 from tqdm import tqdm
 
@@ -24,7 +23,7 @@ def reduce_resolution(image_path, new_height):
 
 def print_help():
     print("Usage: python3 main.py [image_path] [height] \n --help or -h for help")
-    exit()
+    raise SystemExit()
 
 def convert2D(liste):
 
@@ -68,11 +67,7 @@ else:
 #try:
 
 im = reduce_resolution(img_filename, img_height).convert("1")
-"""
-except:
-    print("Image not found")
-    exit()
-"""
+
 
 
 pixelles = convert2D(list(im.getdata()))
