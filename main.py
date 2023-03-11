@@ -22,7 +22,7 @@ def reduce_resolution(image_path, new_height):
     
 
 def print_help():
-    print("Usage: python3 main.py [image_path] [height] \n --help or -h for help")
+    print("Usage: ascii-art-generator [image_path] [height] \n --help or -h for help")
     raise SystemExit()
 
 def convert2D(liste):
