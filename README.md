@@ -10,7 +10,7 @@ Download the latest release on <a href='https://github.com/judemont/ascii-art-ge
 ### 2. Make executable
 `chmod +x ascii-art-generator`
 ### 3. Add file to /bin
-`sudo cp ascii-art-generator /bin`
+`sudo cp ascii-art-generator /bin/ascii-art-generator`
 
 ## Usage
 `ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
