@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install PyInstaller
+      run: pip install pyinstaller
+    - name: Build Binary
+      run: pyinstaller main.py --onefile
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        tag_name: v1.0.0 # version tag to create
+        release_name: Release 1.0.0 # name of the release
+        body: 'New release' # description of the release
+        draft: false # set to true if you want to create a draft release instead of a published one
+        prerelease: false # set to true if this is a pre-release
+    - name: Upload Binary
+      id: upload-release-assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/main # path to the binary file
+        asset_name: main # name of the binary file in the release
+        asset_content_type: application/octet-stream # content type of the binary file
