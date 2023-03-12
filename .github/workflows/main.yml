@@ -19,36 +19,27 @@ jobs:
       run: pip install pyinstaller
     - name: Build Binary
       run: pyinstaller main.py --onefile
-    - name: Get previous release tag
-      id: get_previous_release
-      uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        tag-prefix: v
-    - name: Get version from VERSION file
-      id: get_version
-      run: echo ::set-output name=version::$(cat VERSION)
-    - name: Calculate new release tag
-      id: calculate_release_tag
-      run: echo ::set-output name=release_tag::$(python -c "version='${{ steps.get_version.outputs.version }}'.split('.'); version[2] = str(int(version[2])+1); print('.'.join(version))")
+    - name: Determine Release Version
+      id: determine_version
+      run: echo "::set-output name=version::$(git tag -l 'v*' | wc -l)"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
-        tag_name: ${{ steps.calculate_release_tag.outputs.release_tag }}
-        release_name: Release ${{ steps.calculate_release_tag.outputs.release_tag }}
-        body: 'New release'
-        draft: false
-        prerelease: false
+        tag_name: v${{ steps.determine_version.outputs.version }} # version tag to create
+        release_name: Release ${{ steps.determine_version.outputs.version }} # name of the release
+        body: 'New release' # description of the release
+        draft: false # set to true if you want to create a draft release instead of a published one
+        prerelease: false # set to true if this is a pre-release
     - name: Upload Binary
       id: upload-release-assets
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/main
-        asset_name: ascii-art-generator
-        asset_content_type: application/octet-stream
+        asset_path: ./dist/main # path to the binary file
+        asset_name: main # name of the binary file in the release
+        asset_content_type: application/octet-stream # content type of the binary file
