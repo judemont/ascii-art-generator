@@ -3,7 +3,7 @@
 from tkinter import *
 from PIL import Image
 import os
-from pathlib import Path
+
 from tqdm import tqdm
 import sys
 
