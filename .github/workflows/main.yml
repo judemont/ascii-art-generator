@@ -35,8 +35,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
-        tag_name: ${{ steps.version.outputs.version }} # version tag to create
-        release_name: Ascii art generator ${{ NEW_VERSION }}  # name of the release
+        tag_name: ${{ env.NEW_VERSION }} # version tag to create
+        release_name: Ascii art generator ${{ env.NEW_VERSION }}  # name of the release
         body: 'New release ' # description of the release
         draft: false # set to true if you want to create a draft release instead of a published one
         prerelease: false # set to true if this is a pre-release
