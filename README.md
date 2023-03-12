@@ -18,4 +18,4 @@ Download the latest release on <a href='https://github.com/judemont/ascii-art-ge
 ### Get Help
 `ascii-art-generator --help` or `ascii-art-generator -h`
 ## Contribute
-Yes, you can.
+The contributions are very appreciated.
