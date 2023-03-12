@@ -23,7 +23,7 @@ jobs:
       id: get_previous_release
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
         tag-prefix: v
     - name: Get version from VERSION file
       id: get_version
