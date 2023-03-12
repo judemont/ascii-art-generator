@@ -4,7 +4,7 @@ from tkinter import *
 from PIL import Image
 import os
 from pathlib import Path
-
+import sys
 from tqdm import tqdm
 
 def reduce_resolution(image_path, new_height):
