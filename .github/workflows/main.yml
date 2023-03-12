@@ -1,7 +1,12 @@
+name: Build and Release
+
 on:
   push:
     branches:
       - main
+
+env:
+  PREVIOUS_TAG: ""
 
 jobs:
   build:
@@ -13,27 +18,34 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.x
-    - name: Get Previous Release Tag
-      id: get_previous_tag
-      run: echo ::set-output name=tag::$(git describe --abbrev=0 --tags)
-    - name: Increment Release Tag
-      id: increment_tag
-      run: echo ::set-output name=tag::$(echo "${{ steps.get_previous_tag.outputs.tag }}" | sed -E 's/([0-9]+.[0-9]+.)([0-9]+)/echo \1$((\2+1))/e')
     - name: Install PyInstaller
       run: pip install pyinstaller
     - name: Build Binary
       run: pyinstaller main.py --onefile
+    - name: Get Previous Tag
+      id: get_prev_tag
+      if: env.PREVIOUS_TAG == ""
+      run: echo "::set-env name=PREVIOUS_TAG::$(git describe --abbrev=0)"
+    - name: Update Tag
+      id: update_tag
+      if: env.PREVIOUS_TAG != ""
+      run: echo "::set-env name=PREVIOUS_TAG::$(echo ${env.PREVIOUS_TAG} | awk -F'[.-]' '{$NF+=1; OFS=FS} NF{print}' | sed 's/-/./g')"
+    - name: Set Release Number
+      id: set_release_number
+      run: echo $(( ${env.RELEASE_NUMBER} + 1 )) >> $GITHUB_ENV
+      env:
+        RELEASE_NUMBER: ${{ github.event.release.tag_name }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
-        tag_name: ${{ steps.increment_tag.outputs.tag }} # version tag to create
-        release_name: Release ${{ steps.increment_tag.outputs.tag }} # name of the release
-        body: 'New release' # description of the release
-        draft: false # set to true if you want to create a draft release instead of a published one
-        prerelease: false # set to true if this is a pre-release
+        tag_name: ${{ env.PREVIOUS_TAG }}
+        release_name: Release ${{ github.event.release.tag_name }}
+        body: 'New release'
+        draft: false
+        prerelease: false
     - name: Upload Binary
       id: upload-release-assets
       uses: actions/upload-release-asset@v1
@@ -41,6 +53,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/main # path to the binary file
-        asset_name: ascii-art-generator # name of the binary file in the release
-        asset_content_type: application/octet-stream # content type of the binary file
+        asset_path: ./dist/main
+        asset_name: ascii-art-generator
+        asset_content_type: application/octet-stream
