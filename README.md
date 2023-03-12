@@ -17,5 +17,5 @@ Download the latest release on <a href='https://github.com/judemont/ascii-art-ge
 `ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
 ### Get Help
 `ascii-art-generator --help` or `ascii-art-generator -h`
-## Contribute
-The contributions are very appreciated.
+## Contributions
+Contributions are very appreciated.
