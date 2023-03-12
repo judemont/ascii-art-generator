@@ -32,3 +32,4 @@ jobs:
         asset_name: ascii-art-generator
         asset_content_type: application/octet-stream
         token: ${{ secrets.PAT }}
+
