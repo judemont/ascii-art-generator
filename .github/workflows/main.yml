@@ -30,7 +30,8 @@ jobs:
 
     - name: Install PyInstaller
       run: pip install pyinstaller
-
+    - name : requirements
+      run: pip install pillow image tk pathlib tqdm
     - name: Build Binary
       run: pyinstaller main.py --onefile
 
