@@ -41,5 +41,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./dist/main # path to the binary file
-        asset_name: main # name of the binary file in the release
+        asset_name: ascii-art-generator # name of the binary file in the release
         asset_content_type: application/octet-stream # content type of the binary file
