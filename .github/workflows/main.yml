@@ -31,4 +31,4 @@ jobs:
         asset_path: ./dist/main
         asset_name: ascii-art-generator
         asset_content_type: application/octet-stream
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
