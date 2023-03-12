@@ -12,7 +12,6 @@ Download the latest release on <a href='https://github.com/judemont/ascii-art-ge
 ### 3. Add file to /bin
 `sudo cp ascii-art-generator /bin`
 
-
 ## Usage
 `ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
 ### Get Help
