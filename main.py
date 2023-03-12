@@ -66,12 +66,14 @@ else:
 
 #try:
 
-im = reduce_resolution(img_filename, img_height).convert("1")
+im = reduce_resolution(img_filename, img_height).convert("L")
 
 
 
 pixelles = convert2D(list(im.getdata()))
 
+
+CHARS = ['ㅤㅤㅤ',  '+++', '***', '===', '%%%', '###', '@@@', '&&&', '$$$', 'MMM', 'WWW', '888', '▌▌▌', '▬▬▬', '▒▒▒', '███', '▓▓▓']
 
 
 
@@ -79,28 +81,16 @@ result=""
 
 test =0
 
-
-
 for i in tqdm( range(0, len(pixelles)), desc="Loading..."):
    
 
     result += "\n"
-    test=0
+   
 
     
     for ii in range(0, len(pixelles[i])):
-        
-        if pixelles[i][ii] == 0:
-
-            result += "ㅤㅤ"
-            
-        else:
-            result += "▄▄"
-      
-        test+=1
-       
-    
-    
+        result += CHARS[int(pixelles[i][ii]//(256/len(CHARS)))]
+     
 
 
 
