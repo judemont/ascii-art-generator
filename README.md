@@ -11,9 +11,16 @@ Download the latest release on <a href='https://github.com/judemont/ascii-art-ge
 `chmod +x ascii-art-generator`
 ### 3. Add file to /bin
 `sudo cp ascii-art-generator /bin/ascii-art-generator`
-
 ## Usage
-`ascii-art-generator [IMAGE_PATH] [RESULT_WIDTH]`
+`ascii-art-generator [-h] -p PICTURE [-he HEIGHT]`
+```bash
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PICTURE, --picture PICTURE
+                        Picture file to use.
+  -he HEIGHT, --height HEIGHT
+                        Ascii art result height (In numbers of characters)
+```
 ### Get Help
 `ascii-art-generator --help` or `ascii-art-generator -h`
 ## Contributions
