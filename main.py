@@ -1,7 +1,6 @@
 
 #!/usr/bin/env python3
 import argparse
-import os
 from tkinter import *
 
 from PIL import Image
